@@ -6,242 +6,238 @@
   <title>Меню Коктейлей</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #1e1e1e;
+      font-family: system-ui, Arial, sans-serif;
+      background: #23272e;
       color: #f0f0f0;
-      line-height: 1.6;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    h1,
-    h2 {
-      cursor: pointer;
+    .container {
+      max-width: 600px;
+      width: 100%;
+      padding: 24px 12px 48px 12px;
+    }
+    h1 {
+      text-align: center;
+      margin: 32px 0 24px 0;
+      font-size: 2.2em;
+      color: #ffe082;
+      letter-spacing: 1px;
+    }
+    .category {
       background: #2a2a2a;
-      padding: 10px;
-      border-radius: 8px;
-      margin-top: 30px;
-      color: #fff;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px #0002;
+      padding: 0 0 12px 0;
     }
-
-    h1::before {
-      content: "🍸 ";
-    }
-
-    h2::before {
-      content: "📂 ";
-    }
-
-    h3 {
-      background: none;
-      padding: 5px 0;
-      margin-top: 25px;
-      color: #81c3ff;
+    .category-title {
+      font-size: 1.3em;
       font-weight: bold;
-      border-left: 4px solid #81c3ff;
-      padding-left: 10px;
+      background: #31343b;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 12px 18px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
-    ul {
-      margin-bottom: 10px;
+    .drinks-list {
+      display: none;
+      padding: 0 18px 8px 18px;
     }
-
-    .step {
-      color: #ccc;
-      margin-left: 20px;
-      margin-bottom: 30px;
+    .category.open .drinks-list {
+      display: block;
     }
-
+    .drink {
+      margin: 18px 0 0 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #3335;
+    }
+    .drink:last-child {
+      border-bottom: none;
+    }
+    .drink-title {
+      color: #81c3ff;
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
     .desc {
       font-style: italic;
-      color: #ccc;
-      margin: 5px 0 10px 0;
+      color: #b0b0b0;
+      margin-bottom: 6px;
     }
-
-    .section,
-    .subsection {
-      display: none;
+    ul {
+      margin: 0 0 6px 0;
+      padding-left: 18px;
+    }
+    .step {
+      color: #ccc;
+      margin-left: 8px;
+      margin-bottom: 10px;
+      font-size: 0.98em;
+    }
+    @media (max-width: 700px) {
+      .container { max-width: 98vw; }
+      h1 { font-size: 1.3em; }
     }
   </style>
   <script>
-    function toggleSection(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    }
-
-    window.onload = () => {
-      document.querySelectorAll('.section, .subsection').forEach(s => s.style.display = 'none');
-    };
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.category-title').forEach(function(title) {
+        title.addEventListener('click', function() {
+          const cat = title.parentElement;
+          cat.classList.toggle('open');
+        });
+      });
+    });
   </script>
 </head>
 
+
 <body>
+  <div class="container">
+    <h1>🍸 Меню коктейлей</h1>
 
-  <h1 onclick="toggleSection('rum')">Коктейли с белым ромом</h1>
-  <div id="rum" class="section">
-
-    <h2 onclick="toggleSection('rum_short')">Short Drinks</h2>
-    <div id="rum_short" class="subsection">
-
-      <h3>Daiquiri</h3>
-      <div class="desc">Классика рома. Кислый, простой, бодрящий коктейль.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>25 мл сока лайма</li>
-        <li>15 мл сахарного сиропа</li>
-      </ul>
-      <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
-
-      <h3>Bacardi Cocktail</h3>
-      <div class="desc">Вариант Дайкири с гренадином. Яркий, фруктовый.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>20 мл сока лайма</li>
-        <li>10 мл гренадина</li>
-      </ul>
-      <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
-
-      <h3>Citrus Smash</h3>
-      <div class="desc">Цитрусовый микс с мятой и ромом. Очень лёгкий и универсальный.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>20 мл сока лимона/лайма</li>
-        <li>10 мл сахарного сиропа</li>
-        <li>Мята (по вкусу)</li>
-      </ul>
-      <div class="step">→ Размять мяту, взболтать со льдом, процедить.</div>
-
-
-
+    <div class="category">
+      <div class="category-title">🥃 Коктейли с белым ромом</div>
+      <div class="drinks-list">
+        <div class="drink">
+          <div class="drink-title">Daiquiri</div>
+          <div class="desc">Классика рома. Кислый, простой, бодрящий коктейль.</div>
+          <ul>
+            <li>50 мл белого рома</li>
+            <li>25 мл сока лайма</li>
+            <li>15 мл сахарного сиропа</li>
+          </ul>
+          <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Bacardi Cocktail</div>
+          <div class="desc">Вариант Дайкири с гренадином. Яркий, фруктовый.</div>
+          <ul>
+            <li>50 мл белого рома</li>
+            <li>20 мл сока лайма</li>
+            <li>10 мл гренадина</li>
+          </ul>
+          <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Citrus Smash</div>
+          <div class="desc">Цитрусовый микс с мятой и ромом. Очень лёгкий и универсальный.</div>
+          <ul>
+            <li>50 мл белого рома</li>
+            <li>20 мл сока лимона/лайма</li>
+            <li>10 мл сахарного сиропа</li>
+            <li>Мята (по вкусу)</li>
+          </ul>
+          <div class="step">→ Размять мяту, взболтать со льдом, процедить.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Mojito (с лимонадом)</div>
+          <div class="desc">Мята, лайм, ром, лимонад — идеальный летний микс.</div>
+          <ul>
+            <li>50 мл белого рома</li>
+            <li>20 мл сока лайма</li>
+            <li>15 мл сахарного сиропа</li>
+            <li>6–8 листиков мяты</li>
+            <li>Лимонад San Pellegrino</li>
+          </ul>
+          <div class="step">→ Размять мяту с сиропом и соком, добавить ром, лёд, долить лимонадом.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Citrus Mojito Highball</div>
+          <div class="desc">Летняя вариация мохито с San Pellegrino вместо содовой.</div>
+          <ul>
+            <li>50 мл белого рома</li>
+            <li>20 мл сока лайма</li>
+            <li>10 мл сахарного сиропа</li>
+            <li>Мята</li>
+            <li>Лимонад San Pellegrino (до 100 мл)</li>
+          </ul>
+          <div class="step">→ Размять мяту с сиропом и лаймом, добавить ром и лёд, долить лимонадом. Перемешать.</div>
+        </div>
+      </div>
     </div>
 
-    <h2 onclick="toggleSection('rum_long')">Long Drinks</h2>
-    <div id="rum_long" class="subsection">
-
-      <h3>Mojito (с лимонадом)</h3>
-      <div class="desc">Мята, лайм, ром, лимонад — идеальный летний микс.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>20 мл сока лайма</li>
-        <li>15 мл сахарного сиропа</li>
-        <li>6–8 листиков мяты</li>
-        <li>Лимонад San Pellegrino</li>
-      </ul>
-      <div class="step">→ Размять мяту с сиропом и соком, добавить ром, лёд, долить лимонадом.</div>
-
-      <h3>Citrus Mojito Highball</h3>
-      <div class="desc">Летняя вариация мохито с San Pellegrino вместо содовой.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>20 мл сока лайма</li>
-        <li>10 мл сахарного сиропа</li>
-        <li>Мята</li>
-        <li>Лимонад San Pellegrino (до 100 мл)</li>
-      </ul>
-      <div class="step">→ Размять мяту с сиропом и лаймом, добавить ром и лёд, долить лимонадом. Перемешать.</div>
-
-      <h3>Citrus Mojito Highball</h3>
-      <div class="desc">Летняя вариация мохито с San Pellegrino вместо содовой.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>20 мл сока лайма</li>
-        <li>10 мл сахарного сиропа</li>
-        <li>Мята</li>
-        <li>Лимонад San Pellegrino (до 100 мл)</li>
-      </ul>
-      <div class="step">→ Размять мяту с сиропом и лаймом, добавить ром и лёд, долить лимонадом. Перемешать.</div>
-
-      <h2>Citrus Mojito Highball</h3>
-      <div class="desc">Летняя вариация мохито с San Pellegrino вместо содовой.</div>
-      <ul>
-        <li>50 мл белого рома</li>
-        <li>20 мл сока лайма</li>
-        <li>10 мл сахарного сиропа</li>
-        <li>Мята</li>
-        <li>Лимонад San Pellegrino (до 100 мл)</li>
-      </ul>
-      <div class="step">→ Размять мяту с сиропом и лаймом, добавить ром и лёд, долить лимонадом. Перемешать.</div>
-
-
+    <div class="category">
+      <div class="category-title">🍋 Коктейли с джином</div>
+      <div class="drinks-list">
+        <div class="drink">
+          <div class="drink-title">Gin Daisy</div>
+          <div class="desc">Кисло-сладкий коктейль с гренадином. Красивый и яркий.</div>
+          <ul>
+            <li>45 мл джина</li>
+            <li>20 мл лимонного сока</li>
+            <li>10 мл гренадина</li>
+            <li>10 мл сахарного сиропа</li>
+          </ul>
+          <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Gin & Tonic</div>
+          <div class="desc">Простой и мощный классик. Горький, бодрящий.</div>
+          <ul>
+            <li>50 мл джина</li>
+            <li>100–150 мл тоника</li>
+          </ul>
+          <div class="step">→ В стакан со льдом. Украсить долькой лайма или лимона.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Tom Collins (с лимонадом)</div>
+          <div class="desc">Освежающий кисло-сладкий коктейль с газом.</div>
+          <ul>
+            <li>50 мл джина</li>
+            <li>25 мл лимонного сока</li>
+            <li>15 мл сахарного сиропа</li>
+            <li>Лимонад San Pellegrino</li>
+          </ul>
+          <div class="step">→ Смешать в шейкере, перелить в стакан со льдом, долить лимонадом.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Grenadine Gin Lemonade</div>
+          <div class="desc">Летний, лёгкий и чуть фруктовый коктейль.</div>
+          <ul>
+            <li>40 мл джина</li>
+            <li>15 мл гренадина</li>
+            <li>10 мл лимонного сока</li>
+            <li>Лимонад San Pellegrino</li>
+          </ul>
+          <div class="step">→ Всё в стакан со льдом, перемешать, украсить мятой.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Gin Tonic Smash</div>
+          <div class="desc">Классический джин-тоник с акцентом на мяту и цитрусы — лёгкий и ароматный.</div>
+          <ul>
+            <li>50 мл джина</li>
+            <li>10 мл сока лайма</li>
+            <li>6–8 листиков мяты</li>
+            <li>Тоник (100–120 мл)</li>
+          </ul>
+          <div class="step">→ Размять мяту, добавить джин и сок, перемешать в стакане со льдом, долить тоником.</div>
+        </div>
+        <div class="drink">
+          <div class="drink-title">Gin Citrus Cooler</div>
+          <div class="desc">Сухой, цитрусовый лонг-дринк на основе джина и лимонного фреша.</div>
+          <ul>
+            <li>50 мл джина</li>
+            <li>20 мл сока лимона</li>
+            <li>10 мл сахарного сиропа</li>
+            <li>Содовая или лимонад San Pellegrino (до 100 мл)</li>
+          </ul>
+          <div class="step">→ Взболтать джин, лимон и сироп, вылить в стакан со льдом, долить газом. Украсить мятой.</div>
+        </div>
+      </div>
     </div>
-
   </div>
-
-  <h1 onclick="toggleSection('gin')">Коктейли с джином</h1>
-  <div id="gin" class="section">
-
-    <h2 onclick="toggleSection('gin_short')">Short Drinks</h2>
-    <div id="gin_short" class="subsection">
-
-      <h3>Gin Daisy</h3>
-      <div class="desc">Кисло-сладкий коктейль с гренадином. Красивый и яркий.</div>
-      <ul>
-        <li>45 мл джина</li>
-        <li>20 мл лимонного сока</li>
-        <li>10 мл гренадина</li>
-        <li>10 мл сахарного сиропа</li>
-      </ul>
-      <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
-
-    </div>
-
-    <h2 onclick="toggleSection('gin_long')">Long Drinks</h2>
-    <div id="gin_long" class="subsection">
-
-      <h3>Gin & Tonic</h3>
-      <div class="desc">Простой и мощный классик. Горький, бодрящий.</div>
-      <ul>
-        <li>50 мл джина</li>
-        <li>100–150 мл тоника</li>
-      </ul>
-      <div class="step">→ В стакан со льдом. Украсить долькой лайма или лимона.</div>
-
-      <h3>Tom Collins (с лимонадом)</h3>
-      <div class="desc">Освежающий кисло-сладкий коктейль с газом.</div>
-      <ul>
-        <li>50 мл джина</li>
-        <li>25 мл лимонного сока</li>
-        <li>15 мл сахарного сиропа</li>
-        <li>Лимонад San Pellegrino</li>
-      </ul>
-      <div class="step">→ Смешать в шейкере, перелить в стакан со льдом, долить лимонадом.</div>
-
-      <h3>Grenadine Gin Lemonade</h3>
-      <div class="desc">Летний, лёгкий и чуть фруктовый коктейль.</div>
-      <ul>
-        <li>40 мл джина</li>
-        <li>15 мл гренадина</li>
-        <li>10 мл лимонного сока</li>
-        <li>Лимонад San Pellegrino</li>
-      </ul>
-      <div class="step">→ Всё в стакан со льдом, перемешать, украсить мятой.</div>
-
-      <h3>Gin Tonic Smash</h3>
-      <div class="desc">Классический джин-тоник с акцентом на мяту и цитрусы — лёгкий и ароматный.</div>
-      <ul>
-        <li>50 мл джина</li>
-        <li>10 мл сока лайма</li>
-        <li>6–8 листиков мяты</li>
-        <li>Тоник (100–120 мл)</li>
-      </ul>
-      <div class="step">→ Размять мяту, добавить джин и сок, перемешать в стакане со льдом, долить тоником.</div>
-
-
-      <h3>Gin Citrus Cooler</h3>
-      <div class="desc">Сухой, цитрусовый лонг-дринк на основе джина и лимонного фреша.</div>
-      <ul>
-        <li>50 мл джина</li>
-        <li>20 мл сока лимона</li>
-        <li>10 мл сахарного сиропа</li>
-        <li>Содовая или лимонад San Pellegrino (до 100 мл)</li>
-      </ul>
-      <div class="step">→ Взболтать джин, лимон и сироп, вылить в стакан со льдом, долить газом. Украсить мятой.</div>
-
-
-    </div>
-
-  </div>
+</body>
 
 </body>
 
