@@ -13,30 +13,50 @@
       max-width: 900px;
       margin: auto;
     }
-    h1, h2, h3 {
+
+    h1, h2 {
       cursor: pointer;
       background: #2a2a2a;
       padding: 10px;
       border-radius: 8px;
       margin-top: 30px;
+      color: #fff;
     }
-    h1::before { content: "🍸 "; }
-    h2::before { content: "🥃 "; }
-    h3::before { content: "🧊 "; }
+
+    h1::before {
+      content: "🍸 ";
+    }
+
+    h2::before {
+      content: "📂 ";
+    }
+
+    h3 {
+      background: none;
+      padding: 5px 0;
+      margin-top: 25px;
+      color: #81c3ff;
+      font-weight: bold;
+      border-left: 4px solid #81c3ff;
+      padding-left: 10px;
+    }
 
     ul {
       margin-bottom: 10px;
     }
+
     .step {
       color: #ccc;
       margin-left: 20px;
       margin-bottom: 30px;
     }
+
     .desc {
       font-style: italic;
       color: #ccc;
       margin: 5px 0 10px 0;
     }
+
     .section, .subsection {
       display: none;
     }
@@ -46,6 +66,7 @@
       const el = document.getElementById(id);
       el.style.display = el.style.display === 'none' ? 'block' : 'none';
     }
+
     window.onload = () => {
       document.querySelectorAll('.section, .subsection').forEach(s => s.style.display = 'none');
     };
@@ -59,7 +80,7 @@
     <h2 onclick="toggleSection('rum_short')">Short Drinks</h2>
     <div id="rum_short" class="subsection">
 
-      <h3>1. Daiquiri</h3>
+      <h3>Daiquiri</h3>
       <div class="desc">Классика рома. Кислый, простой, бодрящий коктейль.</div>
       <ul>
         <li>50 мл белого рома</li>
@@ -68,7 +89,7 @@
       </ul>
       <div class="step">→ Взболтать со льдом, процедить в бокал.</div>
 
-      <h3>2. Bacardi Cocktail</h3>
+      <h3>Bacardi Cocktail</h3>
       <div class="desc">Вариант Дайкири с гренадином. Яркий, фруктовый.</div>
       <ul>
         <li>50 мл белого рома</li>
@@ -82,7 +103,7 @@
     <h2 onclick="toggleSection('rum_long')">Long Drinks</h2>
     <div id="rum_long" class="subsection">
 
-      <h3>3. Mojito (с лимонадом)</h3>
+      <h3>Mojito (с лимонадом)</h3>
       <div class="desc">Мята, лайм, ром, лимонад — идеальный летний микс.</div>
       <ul>
         <li>50 мл белого рома</li>
@@ -93,7 +114,7 @@
       </ul>
       <div class="step">→ Размять мяту с сиропом и соком, добавить ром, лёд, долить лимонадом.</div>
 
-      <h3>4. Citrus Smash</h3>
+      <h3>Citrus Smash</h3>
       <div class="desc">Цитрусовый микс с мятой и ромом. Очень лёгкий и универсальный.</div>
       <ul>
         <li>50 мл белого рома</li>
@@ -113,7 +134,7 @@
     <h2 onclick="toggleSection('gin_short')">Short Drinks</h2>
     <div id="gin_short" class="subsection">
 
-      <h3>5. Gin Daisy</h3>
+      <h3>Gin Daisy</h3>
       <div class="desc">Кисло-сладкий коктейль с гренадином. Красивый и яркий.</div>
       <ul>
         <li>45 мл джина</li>
@@ -128,7 +149,7 @@
     <h2 onclick="toggleSection('gin_long')">Long Drinks</h2>
     <div id="gin_long" class="subsection">
 
-      <h3>6. Gin & Tonic</h3>
+      <h3>Gin & Tonic</h3>
       <div class="desc">Простой и мощный классик. Горький, бодрящий.</div>
       <ul>
         <li>50 мл джина</li>
@@ -136,7 +157,7 @@
       </ul>
       <div class="step">→ В стакан со льдом. Украсить долькой лайма или лимона.</div>
 
-      <h3>7. Tom Collins (с лимонадом)</h3>
+      <h3>Tom Collins (с лимонадом)</h3>
       <div class="desc">Освежающий кисло-сладкий коктейль с газом.</div>
       <ul>
         <li>50 мл джина</li>
@@ -146,7 +167,7 @@
       </ul>
       <div class="step">→ Смешать в шейкере, перелить в стакан со льдом, долить лимонадом.</div>
 
-      <h3>8. Grenadine Gin Lemonade</h3>
+      <h3>Grenadine Gin Lemonade</h3>
       <div class="desc">Летний, лёгкий и чуть фруктовый коктейль.</div>
       <ul>
         <li>40 мл джина</li>
